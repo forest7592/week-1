@@ -1,0 +1,15 @@
+argsum=complex
+if [ $# -eq 0 ]
+then
+echo "Usage: phone searchfor [... searchfor]
+(You didn't tell me what you want to search for.)"
+fi		# 에러처리
+for arg in "$@"; do
+if [ $argsum == complex ]
+then
+	argsum="${arg}"		# 첫째 argument앞 |제거
+else
+	argsum="${argsum}|${arg}"		# 모든 인자 하나의 문자열로
+fi
+done
+egrep -i "$argsum" mydata | awk -f display		# 추출/출력
